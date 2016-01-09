@@ -67,7 +67,6 @@ alias ve='vim ~/.vimrc'
 
 # zsh profile editing
 alias ze='vim ~/.zshrc'
-alias zr='source ~/.zshrc'
 
 # Git Aliases
 alias gs='git status'
@@ -128,6 +127,7 @@ alias gsmu='git submodule update'
 alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
+alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # Common shell functions
 alias less='less -r'
@@ -144,7 +144,10 @@ alias gz='tar -zcvf'
 alias c='rails c' # Rails 3
 alias co='script/console' # Rails 2
 alias cod='script/console --debugger'
-alias ts='thin start'
+
+#If you want your thin to listen on a port for local VM development
+#export VM_IP=10.0.0.1 <-- your vm ip
+alias ts='thin start -a ${VM_IP:-127.0.0.1}'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'
 alias tftl='tail -f log/test.log'
@@ -169,6 +172,11 @@ alias rdmr='rake db:migrate:redo'
 # Zeus
 alias zs='zeus server'
 alias zc='zeus console'
+alias zr='zeus rspec'
+alias zrc='zeus rails c'
+alias zrs='zeus rails s'
+alias zrdbm='zeus rake db:migrate'
+alias zrdbtp='zeus rake db:test:prepare'
 
 # Rspec
 alias rs='rspec spec'
@@ -178,6 +186,7 @@ alias srgm='spring rails g migration'
 alias srdm='spring rake db:migrate'
 alias srdt='spring rake db:migrate'
 alias srdmt='spring rake db:migrate db:test:prepare'
+
 
 # Sprintly - https://github.com/nextbigsoundinc/Sprintly-GitHub
 alias sp='sprintly'
